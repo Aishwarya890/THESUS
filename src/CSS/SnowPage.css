@@ -1,0 +1,158 @@
+.snow-container {
+    padding: 20px;
+    text-align: center;
+  }
+  .snow-container h1{
+    font-size: 3rem;
+    text-align: left;
+    
+  }
+  
+  .filter-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Size Filter Dropdown */
+  .size-filter {
+    position: relative;
+  }
+  
+  .size-dropdown {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  .size-dropdown button {
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .size-dropdown-content {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 999;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .size-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .size-dropdown-header button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
+  
+  .size-dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 200px; /* Scroll if too many items */
+    overflow-y: auto;
+  }
+  
+  .size-dropdown-content li {
+    margin-bottom: 8px;
+  }
+  
+  .size-dropdown-content input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Sort By */
+  .sort-by select {
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  /* Product Grid */
+  .product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Hover Swap */
+  .image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  
+  .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .image-wrapper:hover .hover-img {
+    opacity: 1;
+  }
+  
+  .image-wrapper:hover .front-img {
+    opacity: 0;
+  }
+  
+  /* Pricing & Tag */
+  .old-price {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  .new-price {
+    font-weight: bold;
+    color: black;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .sale {
+    background-color: #302e2e;
+    color: white;
+  }
+  
+  .sold-out {
+    background-color: darkgray;
+    color: white;
+  }
+  

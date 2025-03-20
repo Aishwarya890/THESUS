@@ -1,0 +1,161 @@
+/* Global reset (optional) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Gift Card Section */
+  .gift-card-container {
+    display: inline-block; /* or flex if you prefer side-by-side */
+    text-align: left;
+    margin: 40px 20px;
+  }
+  
+  .gift-card-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+  
+  .gift-card-title {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #123026;
+  }
+  
+  .gift-card-price {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 5px;
+  }
+  
+  /* Newsletter Section */
+  .newsletter-section {
+    background: #f3f3f3;
+    padding: 50px 30px;
+    text-align: center;
+    
+    
+  }
+  
+  .newsletter-section h2 {
+    font-size: 3rem;
+    color: #123026;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter-section p {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    font-size: 1.5rem;
+    color: #555;
+  }
+  
+  .newsletter-form {
+    display: inline-flex;
+    border: 2px solid #123026;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 48px;
+  }
+  
+  .newsletter-form input {
+    padding: 30px;
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+  
+  .newsletter-form button {
+    background-color: #123026;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  .site-footer {
+    background-color: #123026;
+    color: #fff;
+    padding: 40px 20px;
+    
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap; /* For responsiveness */
+    justify-content:space-evenly;
+    margin-bottom: 70px;
+  }
+  
+  .footer-brand {
+    max-width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-brand h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    
+   
+
+  }
+  
+  .footer-links h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    font-size: 15px;
+    color: rgb(234, 230, 230);
+    
+  }
+   
+  .footer-links li:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-links li {
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  
+  /* Payment icons and disclaimers */
+  .footer-bottom {
+    text-align: center;
+  }
+  
+  .payment-icons {
+    display: inline-flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-icons img {
+    width: 30px;
+    height: auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-links {
+      margin-top: 20px;
+    }
+  }
+  
