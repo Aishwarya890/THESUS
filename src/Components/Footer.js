@@ -77,9 +77,47 @@ const Footer = () => {
           <img src={gpayIcon} alt="Google Pay" />
           <img src={shopIcon} alt="Shop Pay" />
         </div>
+        <p>
+  © 2025,{" "}
+  <a href="/home" style={{ color: "white", textDecoration: "none", hover: "underline" }}>
+    Thesus™ Outdoors
+  </a>{" "}
+  <a
+    href="https://www.shopify.com/"
+    style={{ color: "white", textDecoration: "none" }}
+  >
+    Powered by Shopify
+  </a>
+</p>
+<p>
+  •{" "}
+  <a href="/refund" style={{ color: "white", textDecoration: "none" }}>
+    Refund policy
+  </a>{" "}
+  •{" "}
+  <a
+    href="/privacy-policy"
+    style={{ color: "white", textDecoration: "none" }}
+  >
+    Privacy policy
+  </a>{" "}
+  •{" "}
+  <a href="/terms" style={{ color: "white", textDecoration: "none" }}>
+    Terms of service
+  </a>{" "}
+  •{" "}
+  <a
+    href="/shipping-policy"
+    style={{ color: "white", textDecoration: "none" }}
+  >
+    Shipping policy
+  </a>{" "}
+  •{" "}
+  <a href="/contact-info" style={{ color: "white", textDecoration: "none" }}>
+    Contact information
+  </a>
+</p>
 
-        <p>© 2025, Thesus™ Outdoors Powered by Shopify</p>
-        <p>Refund policy • Privacy policy • Terms of service • Shipping policy • Contact information</p>
       </div>
     </footer>
   );

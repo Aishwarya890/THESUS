@@ -1,44 +1,87 @@
-// import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import React, { useState } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
 // import thesusGiftCard from "../images/Thesus_giftcard.jpg";
 // import boot1 from "../images/boot1.png";
 // import boot2 from "../images/boot2.png";
 
+// // Create a new component for related product cards
+// const RelatedProductCard = ({ product }) => {
+//   const [hover, setHover] = useState(false);
+
+//   return (
+//     <div
+//       className="col-6 col-md-3 mt-4"
+//       onMouseEnter={() => setHover(true)}
+//       onMouseLeave={() => setHover(false)}
+//     >
+//       <div className="card h-100 position-relative">
+//         {/* Sale badge */}
+//         {product.tag === "Sale" && (
+//           <span
+//             className="position-absolute bg-dark text-white px-2 py-1"
+//             style={{ fontSize: "0.8rem", top: "10px", left: "10px" }}
+//           >
+//             Sale
+//           </span>
+//         )}
+//         <img
+//           src={hover ? product.hoverImgSrc : product.imgSrc}
+//           className="card-img-top"
+//           alt={product.name}
+//           style={{ height: "200px", objectFit: "cover" }}
+//         />
+//         <div className="card-body d-flex flex-column">
+//           <h6 className="card-title">{product.name}</h6>
+//           <p className="mb-1 text-muted">
+//             <del>{product.oldPrice}</del>
+//           </p>
+//           <p className="fw-bold">{product.price}</p>
+//           {/* Optionally add a button or link here */}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // const GiftCardPage = () => {
-//   // Example "You may also like" products
+//   // Example "You may also like" products with hover image URLs
 //   const relatedProducts = [
 //     {
 //       id: 1,
-//       name: 'The Weekend Boot in Cuero',
-//       price: '10,500.00 AFN',
-//       oldPrice: '12,000.00 AFN',
-//       imgSrc: boot1, // Replace with actual image path
-//       tag: 'Sale',
+//       name: "The Weekend Boot in Cuero",
+//       price: "10,500.00 AFN",
+//       oldPrice: "12,000.00 AFN",
+//       imgSrc: boot1, // Default image
+//       hoverImgSrc: boot2, // Hover image (change as needed)
+//       tag: "Sale",
 //     },
 //     {
 //       id: 2,
-//       name: 'Harvest Gold',
-//       price: '1,000.00 AFN',
-//       oldPrice: '1,500.00 AFN',
+//       name: "Harvest Gold",
+//       price: "1,000.00 AFN",
+//       oldPrice: "1,500.00 AFN",
 //       imgSrc: boot2,
-//       tag: 'Sale',
+//       hoverImgSrc: boot1,
+//       tag: "Sale",
 //     },
 //     {
 //       id: 3,
-//       name: 'The Weekend Boot Classic Sage',
-//       price: '9,600.00 AFN',
-//       oldPrice: '12,000.00 AFN',
+//       name: "The Weekend Boot Classic Sage",
+//       price: "9,600.00 AFN",
+//       oldPrice: "12,000.00 AFN",
 //       imgSrc: boot1,
-//       tag: 'Sale',
+//       hoverImgSrc: boot2,
+//       tag: "Sale",
 //     },
 //     {
 //       id: 4,
-//       name: 'The Weekend Boot 2 in Grey',
-//       price: '13,000.00 AFN',
-//       oldPrice: '15,000.00 AFN',
+//       name: "The Weekend Boot 2 in Grey",
+//       price: "13,000.00 AFN",
+//       oldPrice: "15,000.00 AFN",
 //       imgSrc: boot2,
-//       tag: 'Sale',
+//       hoverImgSrc: boot1,
+//       tag: "Sale",
 //     },
 //   ];
 
@@ -58,9 +101,7 @@
 //         {/* Right Column: Details */}
 //         <div className="col-md-6">
 //           <h1 className="mt-3 mt-md-0">Thesus Gift Card</h1>
-//           <p className="text-muted">
-//             Shipping calculated at checkout.
-//           </p>
+//           <p className="text-muted">Shipping calculated at checkout.</p>
 
 //           {/* Amount Buttons */}
 //           <div className="mb-3">
@@ -91,20 +132,20 @@
 //           {/* Buttons */}
 //           <div className="d-flex gap-2 mb-3">
 //             <button className="btn btn-dark">Add to cart</button>
-           
 //           </div>
 //           <div className="d-flex gap-2 mb-3">
-//           <button className="btn btn-primary">Buy with Shop Pay</button>
+//             <button className="btn btn-primary">Buy with Shop Pay</button>
 //           </div>
 
 //           {/* More payment options */}
 //           <a
-//   href="#more-options"
-//   className="text-decoration-underline d-block text-center text-black"
-// >
-//   More payment options
-// </a>
-// <br></br>
+//             href="#more-options"
+//             className="text-decoration-underline d-block text-center text-black"
+//           >
+//             More payment options
+//           </a>
+//           <br />
+
 //           {/* Accordion Section */}
 //           <div className="accordion" id="giftCardAccordion">
 //             {/* Free shipping */}
@@ -185,16 +226,14 @@
 //               </div>
 //             </div>
 //           </div>
+
 //           {/* Share link */}
 //           <div className="mt-3">
 //             <a href="#share" className="text-decoration-none text-black">
 //               Share
 //             </a>
 //           </div>
-
-          
 //         </div>
-
 //       </div>
 
 //       {/* Related Products Section */}
@@ -202,33 +241,7 @@
 //         <h2>You may also like</h2>
 //         <div className="row">
 //           {relatedProducts.map((product) => (
-//             <div key={product.id} className="col-6 col-md-3 mt-4">
-//               <div className="card h-100">
-//                 {/* Sale badge */}
-//                 {product.tag === 'Sale' && (
-//                   <span
-//                     className="position-absolute bg-dark text-white px-2 py-1"
-//                     style={{ fontSize: '0.8rem', top: '10px', left: '10px' }}
-//                   >
-//                     Sale
-//                   </span>
-//                 )}
-//                 <img
-//                   src={product.imgSrc}
-//                   className="card-img-top"
-//                   alt={product.name}
-//                   style={{ height: '200px', objectFit: 'cover' }}
-//                 />
-//                 <div className="card-body d-flex flex-column">
-//                   <h6 className="card-title">{product.name}</h6>
-//                   <p className="mb-1 text-muted">
-//                     <del>{product.oldPrice}</del>
-//                   </p>
-//                   <p className="fw-bold">{product.price}</p>
-                  
-//                 </div>
-//               </div>
-//             </div>
+//             <RelatedProductCard key={product.id} product={product} />
 //           ))}
 //         </div>
 //       </div>
@@ -237,15 +250,16 @@
 // };
 
 // export default GiftCardPage;
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import thesusGiftCard from "../images/Thesus_giftcard.jpg";
 import boot1 from "../images/boot1.png";
 import boot2 from "../images/boot2.png";
+import { GlobalContext } from "../Components/GlobalProvider";
 
-// Create a new component for related product cards
 const RelatedProductCard = ({ product }) => {
   const [hover, setHover] = useState(false);
+  const { addToCart } = useContext(GlobalContext);
 
   return (
     <div
@@ -254,7 +268,6 @@ const RelatedProductCard = ({ product }) => {
       onMouseLeave={() => setHover(false)}
     >
       <div className="card h-100 position-relative">
-        {/* Sale badge */}
         {product.tag === "Sale" && (
           <span
             className="position-absolute bg-dark text-white px-2 py-1"
@@ -275,7 +288,15 @@ const RelatedProductCard = ({ product }) => {
             <del>{product.oldPrice}</del>
           </p>
           <p className="fw-bold">{product.price}</p>
-          {/* Optionally add a button or link here */}
+          <button 
+            className="btn btn-dark add-to-cart"
+            onClick={() => {
+              addToCart(product);
+              alert("Item added successfully!");
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
@@ -283,15 +304,18 @@ const RelatedProductCard = ({ product }) => {
 };
 
 const GiftCardPage = () => {
-  // Example "You may also like" products with hover image URLs
+  const { addToCart } = useContext(GlobalContext);
+  const [selectedAmount, setSelectedAmount] = useState(50);
+  const [quantity, setQuantity] = useState(1);
+
   const relatedProducts = [
     {
       id: 1,
       name: "The Weekend Boot in Cuero",
       price: "10,500.00 AFN",
       oldPrice: "12,000.00 AFN",
-      imgSrc: boot1, // Default image
-      hoverImgSrc: boot2, // Hover image (change as needed)
+      imgSrc: boot1,
+      hoverImgSrc: boot2,
       tag: "Sale",
     },
     {
@@ -323,36 +347,49 @@ const GiftCardPage = () => {
     },
   ];
 
+  const handleAddGiftCardToCart = () => {
+    const product = {
+      id: `giftcard-${Date.now()}`,
+      name: "Thesus Gift Card",
+      price: `$${selectedAmount}.00`,
+      amount: selectedAmount,
+      quantity,
+      image: thesusGiftCard,
+    };
+    addToCart(product);
+    alert("Item added successfully!");
+  };
+
   return (
     <div className="container my-5">
-      {/* Gift Card Section */}
       <div className="row">
-        {/* Left Column: Image */}
+        {/* Gift Card Image */}
         <div className="col-md-6">
           <img
-            src={thesusGiftCard} // Replace with your actual gift card image
+            src={thesusGiftCard}
             alt="Thesus Gift Card"
             className="img-fluid rounded"
           />
         </div>
-
-        {/* Right Column: Details */}
+        {/* Gift Card Details */}
         <div className="col-md-6">
           <h1 className="mt-3 mt-md-0">Thesus Gift Card</h1>
           <p className="text-muted">Shipping calculated at checkout.</p>
-
-          {/* Amount Buttons */}
+          {/* Amount Selection */}
           <div className="mb-3">
             <h5>Amount:</h5>
             <div className="btn-group" role="group">
-              <button className="btn btn-outline-secondary">$50.00</button>
-              <button className="btn btn-outline-secondary">$100.00</button>
-              <button className="btn btn-outline-secondary">$150.00</button>
-              <button className="btn btn-outline-secondary">$200.00</button>
-              <button className="btn btn-outline-secondary">$250.00</button>
+              {[50, 100, 150, 200, 250].map((amount) => (
+                <button
+                  key={amount}
+                  className={`btn btn-outline-secondary ${selectedAmount === amount ? "active" : ""}`}
+                  onClick={() => setSelectedAmount(amount)}
+                >
+                  ${amount}.00
+                </button>
+              ))}
             </div>
           </div>
-
           {/* Quantity */}
           <div className="mb-3">
             <label htmlFor="quantity" className="form-label">
@@ -362,20 +399,20 @@ const GiftCardPage = () => {
               type="number"
               className="form-control"
               id="quantity"
-              defaultValue={1}
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
               min={1}
             />
           </div>
-
-          {/* Buttons */}
+          {/* Add to Cart Button */}
           <div className="d-flex gap-2 mb-3">
-            <button className="btn btn-dark">Add to cart</button>
+            <button className="btn btn-dark" onClick={handleAddGiftCardToCart}>
+              Add to cart
+            </button>
           </div>
           <div className="d-flex gap-2 mb-3">
             <button className="btn btn-primary">Buy with Shop Pay</button>
           </div>
-
-          {/* More payment options */}
           <a
             href="#more-options"
             className="text-decoration-underline d-block text-center text-black"
@@ -383,10 +420,8 @@ const GiftCardPage = () => {
             More payment options
           </a>
           <br />
-
-          {/* Accordion Section */}
+          {/* Accordion */}
           <div className="accordion" id="giftCardAccordion">
-            {/* Free shipping */}
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
                 <button
@@ -411,8 +446,6 @@ const GiftCardPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* Easy returns */}
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingTwo">
                 <button
@@ -437,8 +470,6 @@ const GiftCardPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* Pay in 4 */}
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingThree">
                 <button
@@ -464,8 +495,6 @@ const GiftCardPage = () => {
               </div>
             </div>
           </div>
-
-          {/* Share link */}
           <div className="mt-3">
             <a href="#share" className="text-decoration-none text-black">
               Share
@@ -473,8 +502,7 @@ const GiftCardPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Related Products Section */}
+      {/* Related Products */}
       <div className="mt-5">
         <h2>You may also like</h2>
         <div className="row">
@@ -488,3 +516,4 @@ const GiftCardPage = () => {
 };
 
 export default GiftCardPage;
+

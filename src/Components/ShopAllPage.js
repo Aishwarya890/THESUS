@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 // Image imports (adjust paths as needed)
@@ -32,13 +32,14 @@ import image31 from "../images/image31.jpg";
 import image32 from "../images/image32.jpg";
 import image33 from "../images/image33.jpg";
 import image34 from "../images/image34.jpg";
+import { GlobalContext } from "../Components/GlobalProvider";
 
 const products = [
   {
     id: 1,
     name: "Thesus Gift Card",
     oldPrice: "Rs. 22,100.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: giftCard,
     tag: "Sale",
     sizes: ["36", "37", "38"],
@@ -47,7 +48,7 @@ const products = [
     id: 2,
     name: "The Weekend Boot Z in Grey",
     oldPrice: "Rs. 22,100.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image17,
     hoverImg: image18,
     tag: "Sale",
@@ -57,7 +58,7 @@ const products = [
     id: 3,
     name: "The Allegra Weekend Boot",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image1,
     hoverImg: image2,
     tag: "Sale",
@@ -67,7 +68,7 @@ const products = [
     id: 4,
     name: "The Weekend Boot in Black",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image3,
     hoverImg: image4,
     tag: "Sale",
@@ -77,7 +78,7 @@ const products = [
     id: 5,
     name: "The Weekend Boot in Sage",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image5,
     hoverImg: image6,
     tag: "Sale",
@@ -87,7 +88,7 @@ const products = [
     id: 6,
     name: "The Weekend Boot Beige",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image7,
     hoverImg: image6,
     tag: "Sale",
@@ -97,7 +98,7 @@ const products = [
     id: 7,
     name: "The Weekend Boot Classic Black",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 10,600.00",
+    price: "10,600.00 Rs.",
     imgSrc: image8,
     hoverImg: image9,
     tag: "Sold out",
@@ -107,7 +108,7 @@ const products = [
     id: 8,
     name: "The Simone Weekend Boot",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image10,
     hoverImg: image11,
     tag: "Sold out",
@@ -117,7 +118,7 @@ const products = [
     id: 9,
     name: "The Weekend Boot Classic Sage",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 11,700.00",
+    price: "11,700.00 Rs.",
     imgSrc: image13,
     hoverImg: image14,
     tag: "Sale",
@@ -127,7 +128,7 @@ const products = [
     id: 10,
     name: "The Weekend Boot Z in Black",
     oldPrice: "Rs. 22,100.00",
-    price: "Rs. 18,000.00",
+    price: "18,000.00 Rs.",
     imgSrc: image15,
     hoverImg: image16,
     tag: "Sale",
@@ -137,7 +138,7 @@ const products = [
     id: 11,
     name: "Thesus - The Weekend Boot in Cuero",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 12,700.00",
+    price: "12,700.00 Rs.",
     imgSrc: image21,
     hoverImg: image22,
     tag: "Sale",
@@ -147,7 +148,7 @@ const products = [
     id: 12,
     name: "Thesus - The Marlin Weekend Boot",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image23,
     hoverImg: image24,
     tag: "Sold out",
@@ -157,7 +158,7 @@ const products = [
     id: 13,
     name: "Thesus - The Weekend Boot in Navy",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 12,700.00",
+    price: "12,700.00 Rs.",
     imgSrc: image25,
     hoverImg: image26,
     tag: "Sale",
@@ -167,7 +168,7 @@ const products = [
     id: 14,
     name: "The Weekend Boot New Classic Brown",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 12,700.00",
+    price: "12,700.00 Rs.",
     imgSrc: image29,
     hoverImg: image30,
     tag: "Sale",
@@ -177,7 +178,7 @@ const products = [
     id: 15,
     name: "The Scarlet Weekend Boot",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image31,
     hoverImg: image32,
     tag: "Sold out",
@@ -187,7 +188,7 @@ const products = [
     id: 16,
     name: "The Farrah Weekend Boot",
     oldPrice: "Rs. 21,000.00",
-    price: "Rs. 21,000.00",
+    price: "21,000.00 Rs.",
     imgSrc: image33,
     hoverImg: image34,
     tag: "Sold out",
@@ -199,6 +200,8 @@ const ShopAllPage = () => {
   const [hovered, setHovered] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedSort, setSelectedSort] = useState("Featured");
+
+  const { addToCart } = useContext(GlobalContext);
 
   // Filter by size if one is selected
   const filteredProducts = selectedSize
@@ -241,8 +244,9 @@ const ShopAllPage = () => {
       }}
     >
       <div>
-        <br /><br />
-        <h1 style={{ fontSize: '2rem' }}>Shop All</h1>
+        <br />
+        <br />
+        <h1 style={{ fontSize: "2rem" }}>Shop All</h1>
       </div>
 
       <div
@@ -270,9 +274,7 @@ const ShopAllPage = () => {
             }}
           >
             <option value="">All Sizes</option>
-            {[
-              "36", "37", "38", "39", "40", "41", "42", "43", "44"
-            ].map((size) => (
+            {["36", "37", "38", "39", "40", "41", "42", "43", "44"].map((size) => (
               <option key={size} value={size}>
                 {size} (16 products)
               </option>
@@ -308,6 +310,8 @@ const ShopAllPage = () => {
             <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={product.id}>
               <div
                 style={{
+                  width: "300px", // fixed width for all cards
+                  height: "500px", // fixed height for all cards
                   textAlign: "left",
                   color: "#000",
                   border: "1px solid #ddd",
@@ -316,70 +320,86 @@ const ShopAllPage = () => {
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                   position: "relative",
                   transition: "transform 0.3s",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
                 onMouseEnter={() => setHovered(product.id)}
                 onMouseLeave={() => setHovered(null)}
               >
-                <img
-                  src={
-                    hovered === product.id
-                      ? product.hoverImg || product.imgSrc
-                      : product.imgSrc
-                  }
-                  alt={product.name}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "8px",
-                    marginBottom: "10px",
-                    transition: "0.3s ease-in-out",
+                <div>
+                  <img
+                    src={hovered === product.id ? product.hoverImg || product.imgSrc : product.imgSrc}
+                    alt={product.name}
+                    style={{
+                      width: "100%",
+                      height: "250px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      marginBottom: "10px",
+                      transition: "0.3s ease-in-out",
+                    }}
+                  />
+                  {product.tag === "Sold out" && (
+                    <span
+                      role="status"
+                      tabIndex="0"
+                      aria-label="Sold Out"
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        left: "10px",
+                        backgroundColor: "rgba(255, 0, 0, 0.8)",
+                        color: "#fff",
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Sold Out
+                    </span>
+                  )}
+                  {product.tag === "Sale" && (
+                    <span
+                      role="status"
+                      tabIndex="0"
+                      aria-label="On Sale"
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        left: "10px",
+                        backgroundColor: "rgba(0, 128, 0, 0.8)",
+                        color: "#fff",
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Sale
+                    </span>
+                  )}
+                  <p style={{ fontSize: "1.2rem", fontWeight: "bold" }}>{product.name}</p>
+                  <p>
+                    <span style={{ textDecoration: "line-through", color: "gray" }}>
+                      {product.oldPrice}
+                    </span>{" "}
+                    <span style={{ color: "#D32F2F", fontSize: "1.2rem", fontWeight: "bold" }}>
+                      {product.price}
+                    </span>
+                  </p>
+                </div>
+                <button 
+                  className="btn btn-dark add-to-cart"
+                  onClick={() => {
+                    addToCart(product);
+                    alert("Item added successfully!");
                   }}
-                />
-                {product.tag === "Sold out" && (
-                  <button
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      backgroundColor: "rgba(255, 0, 0, 0.8)",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "5px",
-                      padding: "5px 10px",
-                      cursor: "not-allowed",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Sold Out
-                  </button>
-                )}
-                {product.tag === "Sale" && (
-                  <button
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      backgroundColor: "rgba(0, 128, 0, 0.8)",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "5px",
-                      padding: "5px 10px",
-                      cursor: "pointer",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Sale
-                  </button>
-                )}
-                <p style={{ fontSize: "1.2rem", fontWeight: "bold" }}>{product.name}</p>
-                <p>
-                  <span style={{ textDecoration: "line-through", color: "gray" }}>
-                    {product.oldPrice}
-                  </span>{" "}
-                  <span style={{ color: "#D32F2F", fontSize: "1.2rem", fontWeight: "bold" }}>
-                    {product.price}
-                  </span>
-                </p>
+                  tabIndex="0"
+                  aria-label={`Add ${product.name} to cart`}
+                  style={{ width: "100%" }}
+                >
+                  Add to cart
+                </button>
               </div>
             </Col>
           ))}

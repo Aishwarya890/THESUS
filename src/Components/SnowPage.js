@@ -115,11 +115,12 @@
 // };
 
 // export default SnowPage;
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../CSS/SnowPage.css";
 import image1 from "../images/boot1.png";
 import image2 from "../images/Thesus_giftcard.jpg";
 import boot2 from "../images/boot2.png";
+import { GlobalContext } from "../Components/GlobalProvider";
 
 // Sample product data with dummy sizes for filtering
 const products = [
@@ -127,7 +128,7 @@ const products = [
     id: 1,
     name: "The Weekend Boot Z in Grey",
     oldPrice: "Rs. 22,100.00",
-    price: "Rs. 15,900.00",
+    price: "15,900.00 Rs.",
     imgSrc: image2,
     tag: "Sale",
     sizes: [36, 38, 40],
@@ -136,7 +137,7 @@ const products = [
     id: 2,
     name: "The Weekend Boot Z in Black",
     oldPrice: "Rs. 22,100.00",
-    price: "Rs. 18,000.00",
+    price: "18,000.00 Rs.",
     imgSrc: image1,
     hoverImgSrc: boot2,
     tag: "Sale",
@@ -146,7 +147,7 @@ const products = [
     id: 3,
     name: "The Modern Winter Boot in Beige",
     oldPrice: "Rs. 27,500.00",
-    price: "Rs. 24,400.00",
+    price: "24,400.00 Rs.",
     imgSrc: boot2,
     hoverImgSrc: image1,
     tag: "Sold out",
@@ -156,7 +157,7 @@ const products = [
     id: 4,
     name: "The Modern Winter Boot in Beige",
     oldPrice: "Rs. 27,500.00",
-    price: "Rs. 24,400.00",
+    price: "24,400.00 Rs.",
     imgSrc: image1,
     hoverImgSrc: boot2,
     tag: "Sold out",
@@ -166,7 +167,7 @@ const products = [
     id: 5,
     name: "The Modern Winter Boot in Beige",
     oldPrice: "Rs. 27,500.00",
-    price: "Rs. 24,400.00",
+    price: "24,400.00 Rs.",
     imgSrc: boot2,
     hoverImgSrc: image1,
     tag: "Sold out",
@@ -176,7 +177,7 @@ const products = [
     id: 6,
     name: "The Modern Winter Boot in Beige",
     oldPrice: "Rs. 27,500.00",
-    price: "Rs. 24,400.00",
+    price: "24,400.00 Rs.",
     imgSrc: image1,
     hoverImgSrc: boot2,
     tag: "Sold out",
@@ -186,12 +187,33 @@ const products = [
     id: 7,
     name: "The Modern Winter Boot in Beige",
     oldPrice: "Rs. 27,500.00",
-    price: "Rs. 24,400.00",
+    price: "24,400.00 Rs.",
     imgSrc: boot2,
     hoverImgSrc: image1,
     tag: "Sold out",
     sizes: [38, 41, 43],
-  }
+  },
+  {
+    id: 8,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "24,400.00 Rs.",
+    imgSrc: boot2,
+    hoverImgSrc: image1,
+    tag: "Sold out",
+    sizes: [38, 41, 43],
+  },
+  {
+    id: 9,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "24,400.00 Rs.",
+    imgSrc: boot2,
+    hoverImgSrc: image1,
+    tag: "Sold out",
+    sizes: [38, 41, 43],
+  },
+  
   // ... add more product data as needed
 ];
 
@@ -217,6 +239,8 @@ const SnowPage = () => {
   const [selectedSizes, setSelectedSizes] = useState([]);
   // State for the sort option
   const [sortOption, setSortOption] = useState("Featured");
+
+  const { addToCart } = useContext(GlobalContext);
 
   // Toggle the size dropdown visibility
   const toggleSizeDropdown = () => {
@@ -340,31 +364,96 @@ const SnowPage = () => {
       {/* Product Grid */}
       <div className="product-grid">
         {sortedProducts.map((product) => (
-          <div key={product.id} className="product-card">
-            <div className="image-wrapper">
-              <img
-                className="front-img"
-                src={product.imgSrc}
-                alt={product.name}
-              />
-              {product.hoverImgSrc && (
-                <img
-                  className="hover-img"
-                  src={product.hoverImgSrc}
-                  alt={`${product.name} hover`}
-                />
+          <div 
+            key={product.id} 
+            className="product-card"
+            style={{
+              width: "300px",   // Fixed width for each card
+              height: "500px",  // Fixed height for each card
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              padding: "15px",
+              margin: "10px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              position: "relative",
+            }}
+          >
+            <div>
+              <div className="image-wrapper">
+                <a href="/thesus-gift-card">
+                  <img
+                    className="front-img"
+                    src={product.imgSrc}
+                    alt={product.name}
+                    style={{
+                      width: "100%",
+                      height: "250px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                </a>
+                {product.hoverImgSrc && (
+                  <img
+                    className="hover-img"
+                    src={product.hoverImgSrc}
+                    alt={`${product.name} hover`}
+                    style={{
+                      width: "100%",
+                      height: "250px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      marginBottom: "10px",
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      opacity: 0,
+                      transition: "opacity 0.3s",
+                    }}
+                  />
+                )}
+              </div>
+              <p style={{ fontWeight: "bold", fontSize: "1.2rem" }}>{product.name}</p>
+              <p className="old-price" style={{ textDecoration: "line-through", color: "gray" }}>
+                {product.oldPrice}
+              </p>
+              <p className="new-price" style={{ color: "#D32F2F", fontSize: "1.2rem", fontWeight: "bold" }}>
+                {product.price}
+              </p>
+              {product.tag && (
+                <span
+                  className={`tag ${product.tag === "Sale" ? "sale" : "sold-out"}`}
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "10px",
+                    backgroundColor: product.tag === "Sale" ? "rgba(0, 128, 0, 0.8)" : "rgba(255, 0, 0, 0.8)",
+                    color: "#fff",
+                    borderRadius: "5px",
+                    padding: "5px 10px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {product.tag}
+                </span>
               )}
             </div>
-            <p>{product.name}</p>
-            <p className="old-price">{product.oldPrice}</p>
-            <p className="new-price">{product.price}</p>
-            <span
-              className={`tag ${
-                product.tag === "Sale" ? "sale" : "sold-out"
-              }`}
+            <button 
+              className="btn btn-dark add-to-cart"
+              onClick={() => {
+                addToCart(product);
+                alert("Item added successfully!");
+              }}
+              tabIndex="0"
+              aria-label={`Add ${product.name} to cart`}
+              style={{ width: "100%" }}
             >
-              {product.tag}
-            </span>
+              Add to cart
+            </button>
           </div>
         ))}
       </div>
@@ -373,4 +462,5 @@ const SnowPage = () => {
 };
 
 export default SnowPage;
+
 
