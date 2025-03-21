@@ -26,6 +26,9 @@ import ShopAllPage from "./Components/ShopAllPage";
 import WinterSalePage from "./Components/WinterSalePage";
 import ValuePage from "./Components/ValuePage";
 import SizeGuide from "./Components/SizeGuidePage";
+import RefundPolicyPage from "./Components/RefundPolicyPage";
+import WearCarePage from "./Components/WearCarePage";
+import ShippingPolicyPage from "./Components/ShippingPolicyPage";
 
 function App() {
   return (
@@ -85,6 +88,17 @@ function App() {
       <Routes>
         <Route path="/size-guide" element={<SizeGuide/>} />
       </Routes>
+      <Routes>
+        <Route path="/refund" element={<RefundPolicyPage/>} />
+      </Routes>
+
+      <Routes>
+        <Route path="/wear-and-care" element={<WearCarePage/>} />
+      </Routes>
+
+      <Routes>
+        <Route path="/shipping-policy" element={<ShippingPolicyPage/>} />
+      </Routes>
 
       
 
@@ -94,5 +108,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

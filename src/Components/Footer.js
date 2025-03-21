@@ -53,7 +53,7 @@ const Footer = () => {
               <li><a href="/size-guide">Size guide</a></li>
               <li><a href="/shipping-policy">Shipping Policy</a></li>
               <li><a href="/refund">Refund Policy</a></li>
-              <li>Wear and Care FAQ</li>
+              <li><a href="/wear-and-care">Wear and Care FAQ</a></li>
             </ul>
           </div>
           {/* About us */}
