@@ -60,13 +60,15 @@
     border-radius: 5px;
     overflow: hidden;
     height: 48px;
+   
   }
   
   .newsletter-form input {
-    padding: 30px;
+    padding: 20px;
     border: none;
     outline: none;
     flex: 1;
+    text-align: flex-start;
   }
   
   .newsletter-form button {
@@ -106,9 +108,8 @@
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    
    
-
+  
   }
   
   .footer-links h4 {
@@ -131,6 +132,23 @@
     margin-bottom: 6px;
     cursor: pointer;
   }
+
+  .footer-links li a{
+    text-decoration: none;
+    color: rgb(234, 230, 230);;
+  }
+
+  .social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #f7e6e6;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #007bff;
+  }
+  
   
   /* Payment icons and disclaimers */
   .footer-bottom {

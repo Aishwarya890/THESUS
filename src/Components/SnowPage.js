@@ -121,7 +121,7 @@ import image1 from "../images/boot1.png";
 import image2 from "../images/Thesus_giftcard.jpg";
 import boot2 from "../images/boot2.png";
 
-// Example data
+// Sample product data with dummy sizes for filtering
 const products = [
   {
     id: 1,
@@ -130,6 +130,7 @@ const products = [
     price: "Rs. 15,900.00",
     imgSrc: image2,
     tag: "Sale",
+    sizes: [36, 38, 40],
   },
   {
     id: 2,
@@ -139,57 +140,62 @@ const products = [
     imgSrc: image1,
     hoverImgSrc: boot2,
     tag: "Sale",
+    sizes: [37, 39, 41],
   },
   {
-         id: 3,
-        name: "The Modern Winter Boot in Beige",
-    
-        oldPrice: "Rs. 27,500.00",
-         price: "Rs. 24,400.00",
-         imgSrc: boot2,
-         hoverImgSrc: image1,
-         tag: "Sold out",
-       },
-       {
-         id: 4,
-         name: "The Modern Winter Boot in Beige",
-         oldPrice: "Rs. 27,500.00",
-         price: "Rs. 24,400.00",
-         imgSrc: image1,
-         hoverImgSrc: boot2,
-         tag: "Sold out",
-       },
-       {
-         id: 5,
-         name: "The Modern Winter Boot in Beige",
-         oldPrice: "Rs. 27,500.00",
-         price: "Rs. 24,400.00",
-         imgSrc: boot2,
-         hoverImgSrc: image1,
-         tag: "Sold out",
-       },
-       {
-         id: 6,
-         name: "The Modern Winter Boot in Beige",
-         oldPrice: "Rs. 27,500.00",
-         price: "Rs. 24,400.00",
-         imgSrc: image1,
-         hoverImgSrc: boot2,
-         tag: "Sold out",
-       },
-       {
-        id: 7,
-        name: "The Modern Winter Boot in Beige",
-         oldPrice: "Rs. 27,500.00",
-         price: "Rs. 24,400.00",
-         imgSrc: boot2,
-         hoverImgSrc: image1,
-        tag: "Sold out",
-       }
-  // ... more product data
+    id: 3,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "Rs. 24,400.00",
+    imgSrc: boot2,
+    hoverImgSrc: image1,
+    tag: "Sold out",
+    sizes: [36, 37, 38],
+  },
+  {
+    id: 4,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "Rs. 24,400.00",
+    imgSrc: image1,
+    hoverImgSrc: boot2,
+    tag: "Sold out",
+    sizes: [39, 40, 41],
+  },
+  {
+    id: 5,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "Rs. 24,400.00",
+    imgSrc: boot2,
+    hoverImgSrc: image1,
+    tag: "Sold out",
+    sizes: [42, 43, 44],
+  },
+  {
+    id: 6,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "Rs. 24,400.00",
+    imgSrc: image1,
+    hoverImgSrc: boot2,
+    tag: "Sold out",
+    sizes: [36, 40, 44],
+  },
+  {
+    id: 7,
+    name: "The Modern Winter Boot in Beige",
+    oldPrice: "Rs. 27,500.00",
+    price: "Rs. 24,400.00",
+    imgSrc: boot2,
+    hoverImgSrc: image1,
+    tag: "Sold out",
+    sizes: [38, 41, 43],
+  }
+  // ... add more product data as needed
 ];
 
-// Example sizes with product counts
+// Available sizes with product counts (dummy counts)
 const allSizes = [
   { size: 36, count: 4 },
   { size: 37, count: 4 },
@@ -205,22 +211,22 @@ const allSizes = [
 ];
 
 const SnowPage = () => {
-  // State to track open/close of the size dropdown
+  // State for the size dropdown open/close
   const [isSizeOpen, setIsSizeOpen] = useState(false);
-  // State for which sizes are currently selected
+  // State for which sizes are currently selected for filtering
   const [selectedSizes, setSelectedSizes] = useState([]);
-  // State for selected sort option
+  // State for the sort option
   const [sortOption, setSortOption] = useState("Featured");
 
-  // Toggle the size dropdown
+  // Toggle the size dropdown visibility
   const toggleSizeDropdown = () => {
     setIsSizeOpen((prev) => !prev);
   };
 
-  // Handle checkbox changes for sizes
+  // Handle changes for size checkboxes
   const handleSizeChange = (size) => {
     if (selectedSizes.includes(size)) {
-      // Remove if already selected
+      // Remove size if already selected
       setSelectedSizes(selectedSizes.filter((s) => s !== size));
     } else {
       // Add new size
@@ -228,32 +234,68 @@ const SnowPage = () => {
     }
   };
 
-  // Reset all selected sizes
+  // Reset the selected sizes
   const resetSizes = () => {
     setSelectedSizes([]);
   };
 
-  // Update sort option
+  // Handle sort option change
   const handleSortChange = (e) => {
     setSortOption(e.target.value);
   };
 
+  // Filter products based on selected sizes (if any are selected)
+  let filteredProducts = products;
+  if (selectedSizes.length > 0) {
+    filteredProducts = products.filter((product) =>
+      product.sizes.some((size) => selectedSizes.includes(size))
+    );
+  }
+
+  // Sort the filtered products based on the selected sort option
+  let sortedProducts = [...filteredProducts];
+  switch (sortOption) {
+    case "Alphabetically, A-Z":
+      sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "Alphabetically, Z-A":
+      sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "Price, low to high":
+      sortedProducts.sort(
+        (a, b) =>
+          parseFloat(a.price.replace(/[^0-9.-]+/g, "")) -
+          parseFloat(b.price.replace(/[^0-9.-]+/g, ""))
+      );
+      break;
+    case "Price, high to low":
+      sortedProducts.sort(
+        (a, b) =>
+          parseFloat(b.price.replace(/[^0-9.-]+/g, "")) -
+          parseFloat(a.price.replace(/[^0-9.-]+/g, ""))
+      );
+      break;
+    // Other cases like Featured, Best selling, Date sorting can be added here
+    default:
+      break;
+  }
+
   return (
     <div className="snow-container">
-      <h1>Snow</h1><br></br>
+      <br />
+      <h1>Snow</h1>
+      <br />
 
       {/* Filter & Sort Section */}
       <div className="filter-sort">
         {/* Size Filter */}
         <div className="size-filter">
-          <label>Filter:</label>
+          <label>Filter: </label>
           <div className="size-dropdown">
-            <button onClick={toggleSizeDropdown}>
-              Size ▼
-            </button>
+            <button onClick={toggleSizeDropdown}>Size ▼</button>
             {isSizeOpen && (
               <div className="size-dropdown-content">
-                {/* Header with 'X selected' & 'Reset' */}
+                {/* Dropdown header with selection count and reset */}
                 <div className="size-dropdown-header">
                   <span>{selectedSizes.length} selected</span>
                   <button onClick={resetSizes}>Reset</button>
@@ -292,37 +334,43 @@ const SnowPage = () => {
           </select>
         </div>
 
-        <span>{products.length} products</span>
+        <span>{sortedProducts.length} products</span>
       </div>
 
       {/* Product Grid */}
       <div className="product-grid">
-        {products.map((product) => {
-          // Optional: Filter or sort your products here based on selectedSizes or sortOption
-          return (
-            <div key={product.id} className="product-card">
-              <div className="image-wrapper">
-                <img className="front-img" src={product.imgSrc} alt={product.name} />
-                {product.hoverImgSrc && (
-                  <img
-                    className="hover-img"
-                    src={product.hoverImgSrc}
-                    alt={`${product.name} hover`}
-                  />
-                )}
-              </div>
-              <p>{product.name}</p>
-              <p className="old-price">{product.oldPrice}</p>
-              <p className="new-price">{product.price}</p>
-              <span className={`tag ${product.tag === "Sale" ? "sale" : "sold-out"}`}>
-                {product.tag}
-              </span>
+        {sortedProducts.map((product) => (
+          <div key={product.id} className="product-card">
+            <div className="image-wrapper">
+              <img
+                className="front-img"
+                src={product.imgSrc}
+                alt={product.name}
+              />
+              {product.hoverImgSrc && (
+                <img
+                  className="hover-img"
+                  src={product.hoverImgSrc}
+                  alt={`${product.name} hover`}
+                />
+              )}
             </div>
-          );
-        })}
+            <p>{product.name}</p>
+            <p className="old-price">{product.oldPrice}</p>
+            <p className="new-price">{product.price}</p>
+            <span
+              className={`tag ${
+                product.tag === "Sale" ? "sale" : "sold-out"
+              }`}
+            >
+              {product.tag}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default SnowPage;
+

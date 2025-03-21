@@ -31,11 +31,11 @@ const RainPage = () => {
 
       {/* Gift Card Section */}
       <div className="gift-card-container">
-        <img
+        <a href="/thesus-gift-card"><img
           src={giftCardImageUrl}
           alt="Thesus Gift Card"
           className="gift-card-image"
-        />
+        /></a>
         <h3 className="gift-card-title">Thesus Gift Card</h3>
         <p className="gift-card-price">From Rs. 5,296.73</p>
       </div>

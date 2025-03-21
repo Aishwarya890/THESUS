@@ -1,5 +1,5 @@
 import React from "react";
-
+import { FaInstagram, FaFacebook, FaPinterest, FaTiktok } from "react-icons/fa";
 import "../CSS/Footer.css";
 import visaIcon from "../images/visa.png";
 import mastercardIcon from "../images/mastercard.png";
@@ -16,6 +16,20 @@ const Footer = () => {
         <div className="footer-brand">
           <h2>THESUS</h2>
           <p>Socially and environmentally progressive outdoor footwear</p>
+          <div className="social-icons">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <FaInstagram />
+      </a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <FaFacebook />
+      </a>
+      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
+        <FaPinterest />
+      </a>
+      <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+        <FaTiktok />
+      </a>
+    </div>
         </div>
 
         <div className="footer-links">
@@ -23,22 +37,22 @@ const Footer = () => {
           <div>
             <h4>Our Shop</h4>
             <ul>
-              <li>All Products</li>
-              <li>The Anyday Rain Boot™</li>
-              <li>The Modern Winter Boot™</li>
-              <li>The Winter Weekend Boot™ Z</li>
-              <li>The Thesus™ Clog</li>
-              <li>Accessories</li>
-              <li>Thesus™ Gift Card</li>
+              <li><a href="/all">All Products</a></li>
+              <li><a href="/rain">The Anyday Rain Boot™</a></li>
+              <li><a href="/rain">The Modern Winter Boot™</a></li>
+              <li><a href="/the-weekend-boto-z">The Winter Weekend Boot™ Z</a></li>
+              <li><a href="/sun">The Thesus™ Clog</a></li>
+              <li><a href="/accessories">Accessories</a></li>
+              <li><a href="/thesus-gift-card">Thesus™ Gift Card</a></li>
             </ul>
           </div>
           {/* Help */}
           <div>
             <h4>Help</h4>
             <ul>
-              <li>Size guide</li>
-              <li>Shipping Policy</li>
-              <li>Refund Policy</li>
+              <li><a href="/size-guide">Size guide</a></li>
+              <li><a href="/shipping-policy">Shipping Policy</a></li>
+              <li><a href="/refund">Refund Policy</a></li>
               <li>Wear and Care FAQ</li>
             </ul>
           </div>
@@ -46,8 +60,8 @@ const Footer = () => {
           <div>
             <h4>About us</h4>
             <ul>
-              <li>Values</li>
-              <li>Contact Us</li>
+              <li><a href="/values">Values</a></li>
+              <li><a href="/contact">Contact Us</a></li>
             </ul>
           </div>
         </div>

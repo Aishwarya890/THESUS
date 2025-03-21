@@ -1,10 +1,10 @@
-body {
+/* body {
   margin: 0;
-  padding-top: 100px; /* Adjust so content isn’t hidden behind fixed navbar */
+  padding-top: 100px; 
   
-}
+} */
 /* Top Bar */
-.top-bar {
+/* .top-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,16 +14,16 @@ body {
   text-align: center;
   padding: 10px;
   font-size: 14px;
-  z-index: 1100; /* Ensure top bar is on top */
-}
+  z-index: 1100; 
+} */
 
 /* Navbar Container */
-.navbar {
-  position: fixed; /* Makes the navbar stay fixed on top */
+/* .navbar {
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Ensures it stays above other elements */
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,67 +31,67 @@ body {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   
-}
+} */
 
 /* Logo */
-.logo {
+/* .logo {
   font-size: 28px;
   font-weight: bold;
   color: #123026;
-}
+} */
 
-.logo a{
+/* .logo a{
   text-decoration: none;
   color: #123026;
 
-}
+} */
 /* Nav Links */
-.nav-links {
+/* .nav-links {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-}
+} */
 
-.nav-links a {
+/* .nav-links a {
   text-decoration: none;
   color: #444;
   font-size: 16px;
   transition: color 0.3s;
-}
+} */
 
-.nav-links a:hover {
+/* .nav-links a:hover {
   color: black;
-}
+} */
 
-.nav-links .active {
+/* .nav-links .active {
   color: red;
   font-weight: bold;
-}
+} */
 
 /* Right Icons */
-.right-icons {
+/* .right-icons {
   display: flex;
   align-items: center;
   gap: 15px;
-}
+} */
 
 /* Currency Selector */
-.currency-selector {
+/* .currency-selector {
   position: relative;
   cursor: pointer;
 }
 
 .currency-selector span {
   font-size: 14px;
-}
+} */
 
-.currency-dropdown {
+/* .currency-dropdown {
   position: absolute;
   top: 20px;
   left: 0;
   width: 180px;
-  max-height: 200px;  /* Scrollable if too many items */
-  overflow-y: auto;
+  max-height: 200px;   */
+  /* overflow-y: auto;
   background-color: #fff;
   border: 1px solid #ddd;
   list-style-type: none;
@@ -108,13 +108,13 @@ body {
 
 .currency-dropdown li:hover {
   background-color: #f2f2f2;
-}
+} */
 
 /* Search Bar */
-.search-bar {
+/* .search-bar {
   position: fixed;
-  top: 70px; /* Below the navbar */
-  left: 50%;
+  top: 70px;  */
+  /* left: 50%;
   transform: translateX(-50%);
   width: 60%;
   max-width: 600px;
@@ -147,10 +147,181 @@ body {
   border: none;
   font-size: 18px;
   cursor: pointer;
+} */
+
+/* Search Bar Container */
+/* .search-bar {
+  position: relative;
+  max-width: 400px;
+  margin: 10px auto;
+  z-index: 1000;
 }
 
+/* Wrapper for the input and clear button */
+/* .search-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #fff;
+} */
+
+/* Search Input Field */
+/* .search-input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 8px 5px;
+} */
+
+/* Clear Button */
+/* .search-clear-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+} */
+
+/* Dropdown Container */
+/* .search-dropdown {
+  position: absolute;
+  top: 45px; /* Adjust according to your input height */
+  /* left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+} */ 
+
+/* Individual Suggestion */
+/* .search-suggestion {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.search-suggestion:hover {
+  background-color: #f9f9f9;
+} */
+
+/* No Results */
+/* .search-no-result {
+  padding: 10px;
+  text-align: center;
+  color: #888;
+} */
+
+/* Suggestion Text */
+/* .suggestion-name {
+  font-weight: 500;
+} */
+
+/* .suggestion-price {
+  color: #888;
+  font-size: 0.9rem;
+} */
+/* Search Overlay Container */
+/* Search Overlay Container */
+/* .search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1200;
+  padding: 20px;
+} */
+
+/* Search Overlay Content */
+/* .search-overlay-content {
+  max-width: 600px;
+  margin: 0 auto;
+} */
+
+/* Search Overlay Header */
+/* .search-overlay-header {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+/* Reuse search-input-wrapper */
+/* .search-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.search-input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 8px 5px;
+}
+
+.search-clear-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+} */
+
+/* Dropdown Container (inside overlay) */
+/* .search-dropdown {
+  margin-top: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+} */
+
+/* Individual Suggestion */
+/* .search-suggestion {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.search-suggestion:hover {
+  background-color: #f9f9f9;
+} */
+
+/* No Results */
+/* .search-no-result {
+  padding: 10px;
+  text-align: center;
+  color: #888;
+} */
+
+/* Suggestion Text */
+/* .suggestion-name {
+  font-weight: 500;
+}
+
+.suggestion-price,
+.suggestion-type {
+  color: #888;
+  font-size: 0.9rem;
+} */
+
+
 /* Modal Overlay (Login & Cart) */
-.modal-overlay {
+/* .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -161,10 +332,10 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-}
+} */
 
 /* Modal Content */
-.modal-content {
+/* .modal-content {
   position: relative;
   background-color: #fff;
   width: 400px;
@@ -182,16 +353,16 @@ body {
   border: none;
   font-size: 18px;
   cursor: pointer;
-}
+} */
 
 /* Modal Headings */
-.modal-content h2 {
+/* .modal-content h2 {
   color: #123026;
   margin-bottom: 20px;
-}
+} */
 
 /* Form Group */
-.form-group {
+/* .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -218,8 +389,9 @@ body {
   text-decoration: none;
 }
 
+
 /* Buttons */
-.login-button,
+/* .login-button,
 .continue-button {
   background-color: #123026;
   color: white;
@@ -234,10 +406,10 @@ body {
 .login-button:hover,
 .continue-button:hover {
   background-color: #145639;
-}
+}  */
 
 /* Responsive */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     gap: 10px;
@@ -253,4 +425,4 @@ body {
   .modal-content {
     width: 90%;
   }
-}
+} */
