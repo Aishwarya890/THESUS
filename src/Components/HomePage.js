@@ -359,22 +359,22 @@ const HomePage = () => {
           <div className="bestseller-card">
             <img src={boot4} alt="Anyday Rain Boot in Black" />
             <h3>The Anyday Rain Boot in Black</h3>
-            <a href="/anyday-black">Shop Now →</a>
+            <a href="/rain">Shop Now →</a>
           </div>
           <div className="bestseller-card">
             <img src={boot7} alt="The Weekend Boot in Beige" />
             <h3>The Weekend Boot in Beige</h3>
-            <a href="/weekend-beige">Shop Now →</a>
+            <a href="/weekend-boot">Shop Now →</a>
           </div>
           <div className="bestseller-card">
             <img src={boot5} alt="The Modern Winter Boot" />
             <h3>The Modern Winter Boot</h3>
-            <a href="/modern-winter">Shop Now →</a>
+            <a href="/winter-sale">Shop Now →</a>
           </div>
           <div className="bestseller-card">
             <img src={boot6} alt="The Weekend Boot in Sage" />
             <h3>The Weekend Boot in Sage</h3>
-            <a href="/weekend-sage">Shop Now →</a>
+            <a href="/weekend-boot">Shop Now →</a>
           </div>
         </div>
         <button className="shop-bestsellers-button">Shop Bestsellers</button>
