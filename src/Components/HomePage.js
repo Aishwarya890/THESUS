@@ -377,7 +377,7 @@ const HomePage = () => {
             <a href="/weekend-boot">Shop Now →</a>
           </div>
         </div>
-        <button className="shop-bestsellers-button">Shop Bestsellers</button>
+        <button className="shop-bestsellers-button"><a href="/all" className="text-decoration-none">Shop Bestsellers</a></button>
       </section>
 
       {/* 2) Try Them Out! Section with Accordion */}
